@@ -1,0 +1,11 @@
+{
+  "name": "miridian-operations",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gestão de operações empresariais, estática e sem dependências.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "preview": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/serve.ps1"
+  }
+}

@@ -1,0 +1,7 @@
+import { escapeHTML as e } from '../formatters.js';
+import { icon } from '../components.js';
+
+export function identityForm(identity) {
+  const firstVisit = !identity.current;
+  return `<form id="identity-form" aria-describedby="identity-privacy"><div class="dialog-body identity-body"><p class="identity-description">Informe seu nome e sobrenome para personalizar seu espaço.</p><p class="form-error" id="identity-error" role="alert" ${identity.error ? '' : 'hidden'}>${e(identity.error || '')}</p><div class="form-grid"><div class="field"><label for="visitor-first-name">Nome</label><input id="visitor-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="60" required value="${e(identity.current?.firstName || '')}" autofocus></div><div class="field"><label for="visitor-last-name">Sobrenome</label><input id="visitor-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="60" required value="${e(identity.current?.lastName || '')}"></div></div><div class="identity-privacy" id="identity-privacy">${icon('shield', 18)}<p>Seu nome e sobrenome são usados apenas para melhorar sua experiência e ficam armazenados localmente.</p></div></div><div class="dialog-footer">${firstVisit ? '' : '<button class="button button-outline" type="button" data-action="close-dialog">Cancelar</button>'}<button class="button button-primary" type="submit">${firstVisit ? 'Continuar' : 'Salvar nome'}${icon('arrow', 16)}</button></div></form>`;
+}
